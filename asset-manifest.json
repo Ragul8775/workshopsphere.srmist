@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/workshopsphere.srmist/static/css/main.df4ac1fd.css",
+    "main.js": "/workshopsphere.srmist/static/js/main.19fbb6ce.js",
+    "static/media/sample1.png": "/workshopsphere.srmist/static/media/sample1.3675513b77677d10e90f.png",
+    "static/media/dees.png": "/workshopsphere.srmist/static/media/dees.28d0364e3828afdc8b4e.png",
+    "static/media/srm.png": "/workshopsphere.srmist/static/media/srm.fcd8157ee351bec6c773.png",
+    "static/media/schl.png": "/workshopsphere.srmist/static/media/schl.7212b48a2971bb716066.png",
+    "index.html": "/workshopsphere.srmist/index.html",
+    "main.df4ac1fd.css.map": "/workshopsphere.srmist/static/css/main.df4ac1fd.css.map",
+    "main.19fbb6ce.js.map": "/workshopsphere.srmist/static/js/main.19fbb6ce.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df4ac1fd.css",
+    "static/js/main.19fbb6ce.js"
+  ]
+}
