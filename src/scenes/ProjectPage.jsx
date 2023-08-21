@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 const ProjectPage = () => {
   const [posts,setPosts] = useState([])
   useEffect(() => {
-    fetch('https://workshopsphere-backend.onrender.com/admin/projects')
+    fetch('http://localhost:6001/admin/projects')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -27,7 +27,7 @@ const ProjectPage = () => {
   
   return (
     <div>
-      <Navbar />
+      
       <div>
         {/* Hero Section */}
         <div className='relative h-[341px] '>

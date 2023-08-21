@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 const Homepage = () => {
   return (
     <div>
-        <Navbar />
+        
         <Hero />
         <div id="members">
         <Contributors />

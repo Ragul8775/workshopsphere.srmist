@@ -3,8 +3,9 @@ import { useState } from 'react'
 import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
 import srm from '../images/srm.png'
 import { Link } from "react-router-dom";
+import Logout from './Logout';
 
-function Navbar() {
+function Navbar({ isLoggedIn, setIsLoggedIn }) {
     const [nav, setNav] = useState(true)
 
     const handleNav = () => {
@@ -33,6 +34,7 @@ function Navbar() {
             <a href=''>
             <li className='p-4 pr-10 hover:underline active:underline '>Contact </li>
             </a>
+            {isLoggedIn && <Logout setIsLoggedIn={setIsLoggedIn} />}
         </ul>
         </div>
         <div onClick={handleNav} className='block md:hidden pr-5'>

@@ -4,7 +4,7 @@ const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('https://workshopsphere-backend.onrender.com/admin/news')
+    fetch('http://localhost:6001/admin/news')
       .then(response => response.json())
       .then(newsData => {
         setNews(newsData);

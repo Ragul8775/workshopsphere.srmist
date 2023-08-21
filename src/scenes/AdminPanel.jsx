@@ -9,7 +9,7 @@ const AdminPanel = () => {
   
     return (
     <div>
-      <Navbar />
+      
       <div className="mb-4 flex items-center">
         
         <div className="flex items-center ml-6">

@@ -33,7 +33,7 @@ const CreatePost = () => {
     data.set('file',files[0]) ;
     ev.preventDefault();
     console.log(files)
-    const response = await fetch('https://workshopsphere-backend.onrender.com/admin/projects',{
+    const response = await fetch('http://localhost:6001/admin/projects',{
       method:'POST',
       body:data,
     }) ;
@@ -48,7 +48,7 @@ const CreatePost = () => {
   return (
    <div>
     
-     <div className="block max-w-l rounded-lg bg-brown-200 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+     <div className="block max-w-l rounded-lg bg-brown-200 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
   <form onSubmit={createNewPost}>
     
      
@@ -57,7 +57,7 @@ const CreatePost = () => {
     type="text"
     value={title}
     onChange={(e) => setTitle(e.target.value)}
-    className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200"
+    className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0"
     placeholder="Title"
   />
   
@@ -69,7 +69,7 @@ const CreatePost = () => {
         type="summary"
         value={summary}
         onChange={e=>setSummary(e.target.value)}
-        className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200"
+        className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0"
         placeholder="Summary" />
      
     </div>
@@ -80,7 +80,7 @@ const CreatePost = () => {
         type="file"
         /* value={files} */
         onChange={e=>setFiles(e.target.files)}
-        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
          />
       
     </div>

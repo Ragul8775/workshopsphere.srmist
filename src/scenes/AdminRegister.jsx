@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
+
 import { Link } from "react-router-dom";
 
 const AdminRegister = () => {
@@ -12,7 +12,7 @@ const AdminRegister = () => {
         e.preventDefault();
         
         try {
-          const response = await fetch('https://workshopsphere-backend.onrender.com/admin/register', {
+          const response = await fetch('http://localhost:6001/admin/register', {
             method: "POST",
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }
@@ -29,7 +29,7 @@ const AdminRegister = () => {
       }
   return (
     <div>
-    <Navbar />
+    
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-[50%] p-6 mx-auto bg-slate-100 rounded-md shadow-md lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-hover-blue underline">
@@ -74,7 +74,7 @@ const AdminRegister = () => {
                     </div>
                 </form>
                 <h1 className=" ml-[80%] font-semibold text-center text-hover-blue underline">
-                <Link to="/admin-login">Login</Link>
+                <Link to="/admin">Login</Link>
                 </h1>
                 
 

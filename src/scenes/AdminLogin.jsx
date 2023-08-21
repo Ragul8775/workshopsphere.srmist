@@ -1,36 +1,40 @@
 import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
+
 import { Navigate, json } from 'react-router-dom';
 
 
-const AdminLogin = () => {
+const AdminLogin = ({ setIsLoggedIn }) => {
      const [email, setEmail] =useState('');
     const [password, setpassword] =useState('');
     const [redirect, setRedirect]=useState(false);
-
+    
    
-    async function login(e){
+    async function login(e) {
         e.preventDefault();
-      const response=   await fetch('https://workshopsphere-backend.onrender.com/admin/login',{
-            method:"POST",
-            body:JSON.stringify({email,password}),
-            headers:{'Content-Type':'application/json'},
-            credentials:'include',
-        })
-        if(response.ok){
-            setRedirect(true);
+        const response = await fetch('http://localhost:6001/admin/login', {
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        });
+      
+        if (response.ok) {
+          const data = await response.json();
+          if (data.token) {
+            localStorage.setItem('authToken', data.token);
+            setIsLoggedIn(true);
+          } else {
+            alert('Authentication failed. Please check your credentials.');
+          }
+        } else {
+          alert('Authentication failed. Please check your credentials.');
         }
-        else{
-            alert('Wrong Credentials!!!')
-        }
- 
-    }
-    if(redirect){
-        return <Navigate to={'/admin-panel'}/>
-    }
+      }
+      
+      
   return (
     <div>
-        <Navbar />
+        
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-[50%]  p-6 mx-auto bg-slate-100 rounded-md shadow-md lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-hover-blue underline">
@@ -70,7 +74,7 @@ const AdminLogin = () => {
                     </div>
                     
                     <div className="mt-6">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-hover-blue rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                        <button  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-hover-blue rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
                             Login
                         </button>
                     </div>

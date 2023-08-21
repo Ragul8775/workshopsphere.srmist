@@ -10,7 +10,7 @@ const CreateNewsForm = ({ onCreateNews }) => {
   async function handleSubmit(ev) {
     ev.preventDefault();
 
-    const response = await fetch('https://workshopsphere-backend.onrender.com/admin/news', {
+    const response = await fetch('http://localhost:6001/admin/news', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const CreateNewsForm = ({ onCreateNews }) => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200"
+          className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0"
           placeholder="Title"
         />
       </div>
@@ -45,7 +45,7 @@ const CreateNewsForm = ({ onCreateNews }) => {
         <textarea
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-200"
+          className="block min-h-[auto] w-full rounded border border-neutral-300 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none focus:border-primary focus:ring-0"
           placeholder="Summary"
         />
       </div>
