@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import Navbar from '../components/Navbar'
+
 import HeroLogo from '../images/sample1.png'
 import Post from '../components/Post'
 import Footer from '../components/Footer'
