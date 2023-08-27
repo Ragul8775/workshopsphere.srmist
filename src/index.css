@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+  
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .bg-highlight {
+    background-color:#ffeeba;
+    opacity: 0.8;
+    color: black; 
+  }
+  .news-section {
+    max-height: 50vh; 
+    overflow-y: auto; 
+  }
