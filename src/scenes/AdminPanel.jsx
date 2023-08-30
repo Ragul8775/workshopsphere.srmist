@@ -11,11 +11,12 @@ const AdminPanel = () => {
     useEffect(() => {
       // Check if the user is logged in by verifying the token in local storage
       const authToken = localStorage.getItem('authToken');
+      
       if (authToken) {
         setIsLoggedIn(true);
       }
     }, []);
-  
+    
     if (!isLoggedIn) {
       // If the user is not logged in, redirect to login page
       return <AdminLogin setIsLoggedIn={setIsLoggedIn} />;
