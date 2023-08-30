@@ -17,11 +17,11 @@ const Post = ({ _id, title, summary, cover, content }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md w-72">
       <div className="h-32">
-        <Link to={`/admin/projects/${_id}`}>
+        <Link to={`/projects/${_id}`}>
         <img src={imageUrl} alt="" className="object-cover w-full h-full" /></Link>
       </div>
       <div className="p-4">
-      <Link to={`/admin/projects/${_id}`}> <h2 className="text-lg font-semibold mb-2">{title}</h2></Link>
+      <Link to={`/projects/${_id}`}> <h2 className="text-lg font-semibold mb-2">{title}</h2></Link>
         <p className="text-gray-600">{truncatedSummary}</p>
       </div>
     </div>

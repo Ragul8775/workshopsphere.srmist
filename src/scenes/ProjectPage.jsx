@@ -5,7 +5,7 @@ import HeroLogo from '../images/sample1.png'
 import Post from '../components/Post'
 import Footer from '../components/Footer'
 
-const ProjectPage = () => {
+const ProjectPage = ({isLoggedIn}) => {
   const [posts,setPosts] = useState([])
   useEffect(() => {
     fetch('http://localhost:6001/admin/projects')

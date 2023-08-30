@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
-const PostPage = () => {
-  
+import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+const PostPage = ({ isLoggedIn }) => {
   const [postInfo, setPostInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const formatDate = dateString => {
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
+  const  handleDelete = ()=>{
+    fetch(`http://localhost:6001/projects/${id}`,{
+      method:'DELETE',
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      console.log('Post deleted:',data);
+     navigate('/project-page')
+    })
+    .catch(error=>{
+      console.error('Error deleting post:',error)
+    })
+  }
   useEffect(() => {
     let isMounted = true;
 
-    fetch(`http://localhost:6001/admin/projects/${id}`)
+    fetch(`http://localhost:6001/projects/${id}`)
       .then(response => response.json())
       .then(postInfo => {
         if (isMounted) {
-          console.log('Fetched postInfo:', postInfo);
           setPostInfo(postInfo);
           setLoading(false);
         }
@@ -40,17 +53,32 @@ const PostPage = () => {
   }
 
   return (
-    <main className='mt-8 '>
-      <div className=" mb-4  md:mb-0 w-full max-w-screen-md mx-auto relative" style={{ height: '24em' }}>
-        <div className="absolute left-0 bottom-0 w-full h-full z-10" style={{ backgroundImage: 'linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7))' }}></div>
+    <main className='mt-8'>
+      <div className='mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative' style={{ height: '24em' }}>
+        <div className='absolute left-0 bottom-0 w-full h-full z-10' style={{ backgroundImage: 'linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7))' }}></div>
         {postInfo && <img src={`http://localhost:6001/${postInfo.cover.replace(/\\/g, '/')}`} alt="Post Cover" className='absolute left-0 top-0 w-full h-full z-0 object-cover' />}
         <div className='p-4 absolute bottom-0 left-0 z-20'>
-          {postInfo && <h2 className='text-4xl font-semibold text-gray-100 leading-tight'>{postInfo.title}</h2>}
-          <span className="font-semibold text-gray-400 text-xs">{postInfo && formatDate(postInfo.createdAt)}</span>
+          {postInfo && (
+            <h2 className='text-4xl font-semibold text-gray-100 leading-tight'>{postInfo.title}</h2>
+          )}
+          <div className='flex items-center'>
+            <span className='font-semibold text-gray-400 text-xs mr-2'>
+              {postInfo && formatDate(postInfo.createdAt)}
+            </span>
+            {isLoggedIn && (
+              <div className='flex space-x-2'>
+                <Link to={`/edit/${postInfo._id}`}>
+                <button className='text-blue-500' onClick={() => console.log('Edit')}>
+                  Edit
+                </button></Link>
+                <button className='text-red-500' onClick={handleDelete}>
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* Render the post content */}
       {postInfo && (
         <div dangerouslySetInnerHTML={{ __html: postInfo.content }} className='px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed' />
       )}

@@ -23,12 +23,17 @@ const AdminLogin = ({ setIsLoggedIn }) => {
           if (data.token) {
             localStorage.setItem('authToken', data.token);
             setIsLoggedIn(true);
+            setRedirect(true);
+            console.log('Token stored:', data.token);
           } else {
             alert('Authentication failed. Please check your credentials.');
           }
         } else {
           alert('Authentication failed. Please check your credentials.');
         }
+      }
+      if(redirect){
+        return <Navigate to={'/admin-panel'}/>
       }
       
       

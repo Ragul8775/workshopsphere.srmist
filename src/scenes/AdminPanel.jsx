@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import CreatePost from '../components/CreatePost';
 import CreateNews from '../components/CreateNews'
 import { Switch } from '@headlessui/react'
-
+import AdminLogin from './AdminLogin';
 const AdminPanel = () => {
     const [isCreatingNews, setIsCreatingNews] = useState(true);
-  
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+      // Check if the user is logged in by verifying the token in local storage
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken) {
+        setIsLoggedIn(true);
+      }
+    }, []);
+    
+    if (!isLoggedIn) {
+      // If the user is not logged in, redirect to login page
+      return <AdminLogin setIsLoggedIn={setIsLoggedIn} />;
+    }
+
+
     return (
     <div>
       
@@ -34,7 +50,7 @@ const AdminPanel = () => {
       </div>
   
 
-      <div className="block max-w-l rounded-lg bg-brown-200 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div className="block max-w-l rounded-lg bg-brown-200 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         {isCreatingNews ? (
           <CreateNews  />
         ) : (
