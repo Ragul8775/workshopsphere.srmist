@@ -12,7 +12,7 @@ const AdminRegister = () => {
         e.preventDefault();
         
         try {
-          const response = await fetch('http://localhost:6001/admin/register', {
+          const response = await fetch('https://workshopsphere-backend.onrender.com/admin/register', {
             method: "POST",
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' }

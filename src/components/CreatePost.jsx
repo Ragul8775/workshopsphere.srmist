@@ -33,7 +33,7 @@ const CreatePost = () => {
     data.set('file',files[0]) ;
     ev.preventDefault();
     console.log(files)
-    const response = await fetch('http://localhost:6001/admin/projects',{
+    const response = await fetch('https://workshopsphere-backend.onrender.com/admin/projects',{
       method:'POST',
       body:data,
     }) ;

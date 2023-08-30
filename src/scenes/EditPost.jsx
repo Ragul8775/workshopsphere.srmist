@@ -29,7 +29,7 @@ const EditPost = () => {
       ]
 
     useEffect(()=>{
-        fetch('http://localhost:6001/projects/'+id).then(response=>{
+        fetch('https://workshopsphere-backend.onrender.com/projects/'+id).then(response=>{
             response.json().then(postInfo =>{
                 setTitle(postInfo.title);
                 setContent(postInfo.content);
@@ -50,7 +50,7 @@ const EditPost = () => {
         
         ev.preventDefault();
         
-        const url = `http://localhost:6001/admin/projects/${id}`; // Include the project ID in the URL
+        const url = `https://workshopsphere-backend.onrender.com/admin/projects/${id}`; // Include the project ID in the URL
         const response = await fetch(url, {
           method: 'PUT',
           body: data,

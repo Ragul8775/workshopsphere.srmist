@@ -11,7 +11,7 @@ const AdminLogin = ({ setIsLoggedIn }) => {
    
     async function login(e) {
         e.preventDefault();
-        const response = await fetch('http://localhost:6001/admin/login', {
+        const response = await fetch('https://workshopsphere-backend.onrender.com/admin/login', {
           method: "POST",
           body: JSON.stringify({ email, password }),
           headers: { 'Content-Type': 'application/json' },

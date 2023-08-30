@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 const ProjectPage = ({isLoggedIn}) => {
   const [posts,setPosts] = useState([])
   useEffect(() => {
-    fetch('http://localhost:6001/admin/projects')
+    fetch('https://workshopsphere-backend.onrender.com/admin/projects')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

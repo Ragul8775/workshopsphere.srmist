@@ -10,7 +10,7 @@ const CreateNewsForm = ({ onCreateNews }) => {
   async function handleSubmit(ev) {
     ev.preventDefault();
 
-    const response = await fetch('http://localhost:6001/admin/news', {
+    const response = await fetch('https://workshopsphere-backend.onrender.com/admin/news', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

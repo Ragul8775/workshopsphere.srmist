@@ -6,7 +6,7 @@ const Post = ({ _id, title, summary, cover, content }) => {
 
   // Replace backslashes with forward slashes in the cover path
   const sanitizedCoverPath = cover.replace(/\\/g, '/');
-  const imageUrl = `http://localhost:6001/${sanitizedCoverPath}`;
+  const imageUrl = `https://workshopsphere-backend.onrender.com/${sanitizedCoverPath}`;
    console.log(imageUrl)
   // Truncate the summary if it exceeds the maximum length
   const truncatedSummary =
